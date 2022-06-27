@@ -8,7 +8,7 @@ const Description = () => {
     <div id="description">
       <title title="Description"></title>
 
-      <Container className="mt-5">
+      <Container className="mt-5 mb-5">
         <Row>
             {data.map((product) => (
               <Product key={product.id} product={product}></Product>
