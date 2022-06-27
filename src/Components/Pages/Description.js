@@ -7,7 +7,7 @@ const Description = () => {
   return (
     <div id="description">
       <title title="Description"></title>
-
+    <h1 className="text-center mt-5">Description</h1>
       <Container className="mt-5 mb-5">
         <Row>
             {data.map((product) => (
