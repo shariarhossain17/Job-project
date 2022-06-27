@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from '../src/Components/Shared/Header';
 import './App.css';
+import Details from './Components/Pages/Details';
 import Home from './Components/Pages/Home';
 import Login from './Components/Pages/Login';
 import Register from './Components/Pages/Register';
@@ -17,7 +18,7 @@ function App() {
       <Route path='/' element={<Home></Home>}></Route>
       <Route path='/login'element={<Login></Login>}></Route>
       <Route path='/signup'element={<Register></Register>}></Route>
-      
+      <Route path='/adriano-product/:id' element={<Details></Details>}></Route>
      </Routes>
     </div>
   );

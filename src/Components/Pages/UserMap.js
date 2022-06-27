@@ -20,7 +20,6 @@ const UserMap = () => {
   const location = useGeoLocation()
   const mapRef = useRef();
   const ZOOM_LEVEL = 9;
-    console.log(location);
   const myLocation = () => {
     if (location.loaded && !location.error) {
         mapRef.current?.flyTo(
