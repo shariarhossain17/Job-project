@@ -1,11 +1,11 @@
 import Title from "../Shared/Title";
-import Map from "./Map";
+import UserMap from "./UserMap";
 
 const Home = () => {
     return (
         <div>
             <Title title="Home"></Title>
-            <Map></Map>
+            <UserMap></UserMap>
         </div>
     );
 };
