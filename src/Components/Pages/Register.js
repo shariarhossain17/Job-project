@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import {
-    useAuthState,
-    useCreateUserWithEmailAndPassword,
-    useSignInWithGoogle
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle
 } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/google.png";
@@ -95,12 +95,12 @@ useEffect(()=>{
 },[user])
   return (
     <div>
-      <div>
+      <div className="form-section mb-2">
         <Title title="signup"></Title>
         <div className="container">
           <div className="row">
-            <div className="col-md-4 mx-auto form-style shadow p-5 mt-5">
-              <h1>Sign up</h1>
+            <div className="col-md-5 mx-auto form-style shadow p-5 mt-5">
+              <h1 className="text">Sign up</h1>
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Your name</Form.Label>
@@ -150,19 +150,19 @@ useEffect(()=>{
                 <Form.Text className="text-danger">
                   {error.otherError}
                 </Form.Text>
-                <Button
-                  className="inventory-btn w-100 rounded-pill mt-2"
+                <p
+                  className="regigter-btn w-100  mt-2"
                   variant="primary"
                   type="submit"
                 >
-                  Signup
-                </Button>
+                  SIGNUP
+                </p>
               </Form>
-              <p className="text-center mt-2 text-muted">
+              <p  style={{ fontWeight: "500" }} className=" mt-2 text-muted">
                 Already have account?
                 <Link
-                  style={{ fontWeight: "500" }}
-                  className="text-decoration-none text-black"
+                 
+                  className="text-decoration-none text"
                   to="/login"
                 >
                   Log In
@@ -182,7 +182,7 @@ useEffect(()=>{
 
               <div
                 onClick={() => signInWithGoogle()}
-                className="d-flex align-items-center login-btn"
+                className="d-flex align-items-center google-login-btn"
               >
                 <img width={30} src={logo} alt="" />
                 <span className="ms-5">continue with google</span>

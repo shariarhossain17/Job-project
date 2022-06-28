@@ -1,0 +1,50 @@
+.form-section {
+  background-color: #75d1f2;
+  padding: 33px 0;
+}
+
+.regigter-btn {
+  background-color: #17c3b2;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 20px;
+  font-weight: 500;
+}
+
+.text {
+  color: #17c3b2;
+}
+
+regigter-btn:hover {
+  color: #fff;
+}
+
+.form-style {
+  border-right: 20px solid #17c3b2;
+  background-color: #fff;
+}
+
+.password-btn {
+  color: #17c3b2;
+  font-weight: 500;
+}
+
+.google-login-btn {
+  border: 2px solid #2f98be;
+  color: black;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 5px 20px;
+}
+.form-control {
+  background-color: #e8f0fe;
+}
+.form-control:focus {
+  color: gray;
+  background-color: #e8f0fe;
+  border-color: #e8f0fe;
+  outline: 0;
+  box-shadow: none;
+}

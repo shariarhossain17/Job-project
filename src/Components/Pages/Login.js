@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import logo from '../../assets/google.png';
 import auth from "../../firebase.init";
+import "../Css/Login.css";
 import Spinner from "../Shared/Spinner";
 import Title from "../Shared/Title";
 
@@ -99,14 +100,15 @@ const Login = () => {
     }
   },[user])
   return (
-    <div>
+    <div className="form-section">
         <Title title="login"></Title>
       <div className="container">
         <div className="row">
-          <div className="col-md-4 mx-auto form-style shadow p-5 mt-5 rounded">
-            <Form onSubmit={handleSignIn} >
+          <div className="col-md-5 mx-auto form-style shadow p-5 mt-5 rounded">
+          <h2 className="text mb-3">Account Login</h2>
+            <Form  onSubmit={handleSignIn} >
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>Email</Form.Label>
                 <Form.Control onChange={handleEmailForm} type="email" placeholder="Enter email" required />
                 <Form.Text className="text-danger">
                  {inputError.email}
@@ -120,12 +122,12 @@ const Login = () => {
                  {inputError.password}
                 </Form.Text>
               </Form.Group>
-              <button onClick={handleResetPass} className="btn btn-link text-decoration-none text-muted fs-6 mb-1">forgot password</button>
-              <Button className="inventory-btn w-100 rounded-pill" variant="primary" type="submit">
-                Login
-              </Button>
+              <a onClick={handleResetPass} className="btn btn-link text-decoration-none  password-btn mb-1">Forgot Password?</a>
+              <p className="regigter-btn w-100" variant="primary" type="submit">
+                LOGIN
+              </p>
             </Form>
-            <p className="text-center mt-2 text-muted">you are new?<Link style={{fontWeight:"500"}} className="text-decoration-none text-black" to='/signup'>signup</Link> </p>
+            <p style={{fontWeight:"500"}} className="mt-2 text-muted">you are new?<Link  className="text-decoration-none text" to='/signup'>signup</Link> </p>
             <div className="d-flex justify-center align-items-center mt-2">
               <div
                 className="w-50"
@@ -140,7 +142,7 @@ const Login = () => {
 
             <div
               onClick={() => signInWithGoogle()}
-              className="d-flex align-items-center login-btn"
+              className="d-flex align-items-center google-login-btn"
             >
               <img width={30} src={logo} alt="" />
               <span className="ms-5">continue with google</span>

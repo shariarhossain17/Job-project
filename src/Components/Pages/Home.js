@@ -1,4 +1,5 @@
 import Fotter from "../Shared/Fotter";
+import Header from "../Shared/Header";
 import Title from "../Shared/Title";
 import About from "./About";
 import Banner from "./Banner";
@@ -9,6 +10,7 @@ const Home = () => {
     return (
         <div>
             <Title title="Home"></Title>
+            <Header></Header>
             <Banner></Banner>
             <Description></Description>
             <About></About>
