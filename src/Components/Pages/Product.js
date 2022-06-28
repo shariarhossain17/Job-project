@@ -1,4 +1,4 @@
-import { Button, Card, Col } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import '../Css/Product.css';
 
@@ -16,7 +16,7 @@ const Product = ({product}) => {
           <Card.Text>
             Price:${price}
           </Card.Text>
-          <Button onClick={()=>navigate(`/adriano-product/${id}`)} variant="primary">Details</Button>
+          <a className="details-btn" onClick={()=>navigate(`/adriano-product/${id}`)} variant="primary">Details</a>
         </Card.Body>
       </Card>
       </Col>

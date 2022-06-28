@@ -7,3 +7,13 @@
   border-radius: 39px;
   box-shadow: 50px 50px 100px #dedede;
 }
+.details-btn {
+  color: #56a1ae;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 17px;
+}
+.details-btn:hover {
+  color: #56a1ae;
+  text-decoration: none;
+}

@@ -3,5 +3,9 @@
   margin-right: 30px;
   font-size: 15px;
   font-weight: 500;
-  color: black;
+  color: white;
+}
+
+.header-bg {
+  background-color: #131921;
 }

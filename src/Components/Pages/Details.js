@@ -1,4 +1,5 @@
-import { Button, Card } from "react-bootstrap";
+import { useState } from "react";
+import { Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/effect-creative";
@@ -6,8 +7,23 @@ import data from "../data";
 import Fotter from "../Shared/Fotter";
 
 const Details = () => {
-  const { id } = useParams();
+  const [cart,setCart] = useState(1);
+  
+const { id } = useParams();
   const product = data.find((p) => p.id == id);
+
+  
+  const [price,setPrice] = useState(parseInt(product.price))
+
+  
+  const addToCart = () => {
+    // count = count++
+    const money = parseInt(cart * parseInt(product.price) + parseInt(product.price)) ;
+    setCart(prevCart => prevCart+1)
+    console.log(cart,price);
+    setPrice(money)
+  
+}
 
   return (
     <div className="mt-5">
@@ -26,9 +42,10 @@ const Details = () => {
               <Card.Body>
                 <Card.Title className="mb-4">{product.name}</Card.Title>
                 <Card.Text>
-                  <h4 className="mb-4">${product.price}</h4>
+                  <h4 className="mb-4">${price}</h4>
+                  <h5>Cart: {cart}</h5>
                 </Card.Text>
-                <Button>Add To Cart</Button>
+                <button className="btn-style" onClick={addToCart}>Add To Cart</button>
               </Card.Body>
             </Card>
           </div>

@@ -16,9 +16,9 @@ const Navar = () => {
   };
   return (
     <div className="sticky-top">
-      <Navbar bg="light" style={{ padding: "16px"}} className="" expand="lg">
+      <Navbar  className="header-bg" style={{ padding: "16px"}} expand="lg">
         <Container className="px-4">
-          <Navbar.Brand href="#home">Audrina Shop</Navbar.Brand>
+          <Navbar.Brand className="text-white" href="#home">Audrina Shop</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto header-style">
@@ -28,7 +28,7 @@ const Navar = () => {
               <Link to='/blog'>Blog</Link>
 
               {user ? (
-                <a onClick={handleSignOut}>Logout</a>
+                <a className="text-white" onClick={handleSignOut}>Logout</a>
               ) : (
                 <Link to="/login">Login</Link>
               )}

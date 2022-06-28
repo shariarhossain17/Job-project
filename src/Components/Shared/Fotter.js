@@ -1,8 +1,10 @@
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { Fade } from 'react-reveal';
 import '../Css/Fotter.css';
 const Fotter = () => {
     return (
         <div className="fotter">
+            <Fade bottom>
             <div className="container">
                 <div className="row">
                     <div className="col-md-4">
@@ -13,7 +15,7 @@ const Fotter = () => {
                     <div className="col-md-4">
                     <p className='font-bold text-white'>Address</p>
                     <a href="#" className='text-decoration-none text-muted d-block'>Location: khulna Bangladesh</a>
-                    <a href="#" className='text-decoration-none text-muted'>Phone: +88 01xxxxxxxxx</a>
+                    <a href="#" className='text-decoration-none text-muted'>Phone: +88 01xxxxxxxxx</a> <br />
                     <a href="#" className='text-decoration-none text-muted'>Email: shariarhossain23@gmail.com</a>
                     </div>
                     <div className="col-md-4">
@@ -25,6 +27,7 @@ const Fotter = () => {
                     </div>
                 </div>
             </div>
+            </Fade>
         </div>
     );
 };
