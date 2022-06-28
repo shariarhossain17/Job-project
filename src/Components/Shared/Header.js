@@ -23,8 +23,9 @@ const Navar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto header-style">
               <Link to="/">Home</Link>
-              <HashLink to="#description">Description</HashLink>
-              <HashLink to="#about">About</HashLink>
+              <HashLink to="/home/#description">Description</HashLink>
+              <HashLink to="/home/#about">About</HashLink>
+              <Link to='/blog'>Blog</Link>
 
               {user ? (
                 <a onClick={handleSignOut}>Logout</a>
