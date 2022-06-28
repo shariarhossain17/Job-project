@@ -4,7 +4,7 @@ const Title = ({title}) => {
     return (
         <div>
              <Helmet>
-             <title>{title} Map intergate</title>
+             <title>{title} Adriano shop</title>
             </Helmet>
         </div>
     );

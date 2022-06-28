@@ -9,6 +9,7 @@ import Details from './Components/Pages/Details';
 import Home from './Components/Pages/Home';
 import Login from './Components/Pages/Login';
 import Register from './Components/Pages/Register';
+import NotFound from './Components/Shared/NotFound';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path='/login'element={<Login></Login>}></Route>
       <Route path='/signup'element={<Register></Register>}></Route>
       <Route path='/adriano-product/:id' element={<Details></Details>}></Route>
+      <Route path="*" element={<NotFound></NotFound>}></Route>
      </Routes>
     </div>
   );
