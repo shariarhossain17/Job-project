@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/effect-creative";
 import data from "../data";
+import Fotter from "../Shared/Fotter";
 
 const Details = () => {
   const { id } = useParams();
@@ -33,6 +34,7 @@ const Details = () => {
           </div>
         </div>
       </div>
+      <Fotter></Fotter>
     </div>
   );
 };

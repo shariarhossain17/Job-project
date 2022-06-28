@@ -36,6 +36,7 @@ const UserMap = () => {
   return (
     <>
       <div className="container">
+        <h1 className="text-center">Get Your Location</h1>
         <div className="row">
           <div className="col-md-12">
             <MapContainer
