@@ -9,7 +9,7 @@ const Product = ({product}) => {
     const navigate = useNavigate()
     return (
         <Col md={4}>
-        <Card className="p-2 product-card" style={{ width: '18rem' }}>
+        <Card className="p-2 product-card mt-5 mx-auto" style={{ width: '18rem' }}>
         <Card.Img className="" height="200px" width="250px"  variant="top" src={picture} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
