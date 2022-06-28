@@ -18,8 +18,8 @@ function App() {
      <Header></Header>
      <Routes>
       <Route path='/' element={<Home></Home>}></Route>
-      <Route path='/blog' element={<Blog></Blog>}></Route>
       <Route path='/home' element={<Home></Home>}></Route>
+      <Route path='/blog' element={<Blog></Blog>}></Route>
       <Route path='/login'element={<Login></Login>}></Route>
       <Route path='/signup'element={<Register></Register>}></Route>
       <Route path='/adriano-product/:id' element={<Details></Details>}></Route>
