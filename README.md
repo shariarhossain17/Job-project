@@ -6,3 +6,4 @@ live link : https://map-intergate.web.app/
 - This is simple webpage intergete map user current location
 - Thi web page only frond focused.
 - this page has home,about,description,Blog,footer,login and signup section
+- technology used: Reactjs,React Bootstrap, React router dom,Firebase,React Helmet,Leaflet map.
