@@ -20,6 +20,7 @@
     "react-icons": "^4.4.0",
     "react-leaflet": "^4.0.1",
     "react-router-dom": "^6.3.0",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.5",
     "swiper": "^8.2.5",

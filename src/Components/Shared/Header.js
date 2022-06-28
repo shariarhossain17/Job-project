@@ -4,8 +4,10 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import auth from "../../firebase.init";
 import "../Css/Header.css";
+
 
 const Navar = () => {
   const [user] = useAuthState(auth);
@@ -13,16 +15,16 @@ const Navar = () => {
     signOut(auth);
   };
   return (
-    <div>
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand href="#home">Map intergate</Navbar.Brand>
+    <div className="sticky-top">
+      <Navbar bg="light" style={{ padding: "16px"}} className="" expand="lg">
+        <Container className="px-4">
+          <Navbar.Brand href="#home">Audrina Shop</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto header-style">
               <Link to="/">Home</Link>
-              <Link to="/description">Description</Link>
-              <Link to="/about">About</Link>
+              <HashLink to="#description">Description</HashLink>
+              <HashLink to="#about">About</HashLink>
 
               {user ? (
                 <a onClick={handleSignOut}>Logout</a>
