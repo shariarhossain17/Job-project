@@ -1,0 +1,21 @@
+.decrease {
+  border: 1px solid darkgray;
+  padding: 0 10px;
+}
+.decrese-btn {
+  color: gray;
+}
+.increase-btn {
+  color: gray;
+}
+.input-type {
+  height: 26px;
+  width: 60px;
+  outline: none;
+  border: 1px solid darkgray;
+  text-align: center;
+  font-weight: 500;
+  padding: 0px 18px;
+  font-size: 18px;
+  color: black;
+}

@@ -1,0 +1,17 @@
+.order-btn {
+  background-color: #2dc6c3;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: capitalize;
+  padding: 10px 20px;
+}
+.cancel-btn {
+  border: 2px solid #2dc6c3;
+  color: #2dc6c3;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: capitalize;
+  padding: 7px 20px;
+  margin-right: 10px;
+}

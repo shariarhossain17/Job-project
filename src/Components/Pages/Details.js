@@ -1,44 +1,63 @@
 import { useState } from "react";
 import { Card } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { FaMinus, FaPlus } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/effect-creative";
 import useCart from "../../Hooks/useCart";
-import { addToStorage } from "../../Utilities/AddTodb";
+import { addToPrice, addToPriceDecrease, addToStorage, addToStorageDecrease } from "../../Utilities/AddTodb";
+import "../Css/Detail.css";
 import data from "../data";
 import Fotter from "../Shared/Fotter";
 import Header from "../Shared/Header";
 
 const Details = () => {
-  const [cart,setCart] = useCart();
-  console.log(cart);
- 
-  
+  const [cart, setCart] = useCart();
   const { id } = useParams();
   const product = data.find((p) => p.id == id);
-  const [reload,setReload] = useState(false)
+  const [reload, setReload] = useState(false);
+  const [inputeValue,setInputValue] = useState(0)
 
   const addToCart = () => {
-   
-    let newProduct = []
-    const exist = cart.find(c => c.id == product.id)
-    console.log(exist);
+    let newProduct = [];
+    const exist = cart.find((c) => c.id == product.id);
 
-    if(!exist){
+    if (!exist) {
       product.quantity = 1;
-      newProduct = [...cart,product]
-    }
-    else{
-      const rest = cart.filter(c => cart.id != product.id)
+      newProduct = [...cart, product];
+    } else {
+      const rest = cart.filter((c) => cart.id != product.id);
       exist.quantity = exist.quantity + 1;
-      newProduct = [...rest,exist]
+      newProduct = [...rest, exist];
     }
+    setInputValue(inputeValue + 1)
+
+    addToStorage(product.id);
+    addToPrice(product.id, product.price);
+    setCart(newProduct);
+    setReload(!reload);
+  };
+  const addToDecrease = () => {
+    let newProduct = [];
+    const exist = cart.find((c) => c.id == product.id);
+
+    if (!exist) {
+      product.quantity = 1;
+      newProduct = [...cart, product];
+    } else {
+      const rest = cart.filter((c) => cart.id != product.id);
+      exist.quantity = exist.quantity - 1;
+      newProduct = [...rest, exist];
+    }
+   if(inputeValue > 0){
+    setInputValue(inputeValue - 1)
+   }
     
-    addToStorage(product.id)
-    setCart(newProduct)
-    setReload(!reload)
-  
-}
+    addToStorageDecrease(product.id);
+    addToPriceDecrease(product.id, product.price);
+    setCart(newProduct);
+    setReload(!reload);
+  };
 
   return (
     <div>
@@ -59,9 +78,23 @@ const Details = () => {
                 <Card.Title className="mb-4">{product.name}</Card.Title>
                 <Card.Text>
                   <h4 className="mb-4">${product.price}</h4>
-                  <h5>Cart:</h5>
+                  <div className="d-flex align-items-center">
+                  <div onClick={addToDecrease}  className="decrease">
+                  <FaMinus className="decrese-btn"></FaMinus>
+                  </div>
+                    <input   className="input-type" readOnly type="text" min={0} placeholder={inputeValue}/>
+                   
+                    <div onClick={addToCart} className="decrease">
+                    <FaPlus  className="increase-btn"></FaPlus>
+                    </div>
+                   
+                  </div>
                 </Card.Text>
-                <button className="btn-style" onClick={addToCart}>Add To Cart</button>
+               <Link to='/shipping'>
+               <button className="btn-style" >
+                  Go To Cart
+                </button>
+               </Link>
               </Card.Body>
             </Card>
           </div>
