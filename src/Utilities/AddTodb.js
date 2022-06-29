@@ -27,8 +27,9 @@ const addToStorageDecrease = (id) => {
     }
 
     // decrease
-    const quantity = shoppingItem[id]
+    const quantity = shoppingItem[id];
     if(quantity > 0){
+        
         const newQuantity = quantity - 1; 
         shoppingItem[id] = newQuantity;
     }

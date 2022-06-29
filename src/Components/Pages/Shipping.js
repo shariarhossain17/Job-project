@@ -14,6 +14,7 @@ const Shipping = () => {
     number: "",
     address: "",
   });
+  
   const [error, setError] = useState({
     name: "",
     email: "",
@@ -83,6 +84,8 @@ const Shipping = () => {
       localStorage.removeItem("shopping-price");
       setReload(!reload);
       toast.success("your order confirm");
+      setInformation({name:"",email:"",number:"",address:""})
+      console.log(information);
      
     } 
     else if(!price){

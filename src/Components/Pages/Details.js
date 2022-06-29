@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Card } from "react-bootstrap";
-import { FaMinus, FaPlus } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/effect-creative";
@@ -37,6 +36,7 @@ const Details = () => {
     setCart(newProduct);
     setReload(!reload);
   };
+  
   const addToDecrease = () => {
     let newProduct = [];
     const exist = cart.find((c) => c.id == product.id);
@@ -57,6 +57,7 @@ const Details = () => {
     addToPriceDecrease(product.id, product.price);
     setCart(newProduct);
     setReload(!reload);
+    console.log("click");
   };
 
   return (
@@ -79,13 +80,13 @@ const Details = () => {
                 <Card.Text>
                   <h4 className="mb-4">${product.price}</h4>
                   <div className="d-flex align-items-center">
-                  <div onClick={addToDecrease}  className="decrease">
-                  <FaMinus className="decrese-btn"></FaMinus>
+                  <div className="">
+                  <input className="decrease" onClick={addToDecrease} disabled={inputeValue === 0} type="button" value="-"/>
                   </div>
-                    <input   className="input-type" readOnly type="text" min={0} placeholder={inputeValue}/>
+                  <input   className="input-type "  readOnly type="text" min={0} placeholder={inputeValue}/>
                    
-                    <div onClick={addToCart} className="decrease">
-                    <FaPlus  className="increase-btn"></FaPlus>
+                    <div onClick={addToCart} className="">
+                    <input className="decrease" type="button" value="+" />
                     </div>
                    
                   </div>

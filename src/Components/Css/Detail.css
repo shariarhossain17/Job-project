@@ -1,6 +1,12 @@
 .decrease {
   border: 1px solid darkgray;
   padding: 0 10px;
+  font-size: 19px;
+  font-weight: 500;
+}
+.decrease[value] {
+  font-size: 19px;
+  font-weight: 600;
 }
 .decrese-btn {
   color: gray;
@@ -9,7 +15,7 @@
   color: gray;
 }
 .input-type {
-  height: 26px;
+  height: 30px;
   width: 60px;
   outline: none;
   border: 1px solid darkgray;
