@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
+import { toast } from "react-toastify";
 import { getTotalPrice } from "../../Utilities/AddTodb";
-import '../Css/Shipping.css';
+import "../Css/Shipping.css";
 import Fotter from "../Shared/Fotter";
 import Header from "../Shared/Header";
 import Title from "../Shared/Title";
@@ -17,26 +18,26 @@ const Shipping = () => {
     name: "",
     email: "",
     number: "",
-    address:"",
+    address: "",
     otherError: "",
   });
 
-  const [price,setPrice] = useState(0)
+  const [price, setPrice] = useState(0);
+  const [reload, setReload] = useState(false);
 
-  let shippingData = Object.values(getTotalPrice())
-  
-  useEffect(()=>{
-    function calculation(shipping){
+  let shippingData = Object.values(getTotalPrice());
+
+  useEffect(() => {
+    function calculation(shipping) {
       let sum = 0;
       for (let i = 0; i < shipping.length; i++) {
         const element = shipping[i];
-        sum+= element
-        
+        sum += element;
       }
-      setPrice(sum)
+      setPrice(sum);
     }
     calculation(shippingData);
-  },[shippingData])
+  }, [shippingData]);
 
   const handleNameForm = (event) => {
     setInformation({ ...information, name: event.target.value });
@@ -58,75 +59,108 @@ const Shipping = () => {
     }
   };
 
-  console.log(information);
+  const handleCancelOrdr = () => {
+    if (price) {
+      localStorage.removeItem("shopping-Cart");
+      localStorage.removeItem("shopping-price");
+      setReload(!reload);
+      toast.success("your order cancel");
+    }
+    else{
+        toast.error("not order yet")
+    }
+  };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    console.log(information);
+    if (
+      information.name &&
+      information.email &&
+      information.number &&
+      information.address
+    ) {
+      localStorage.removeItem("shopping-Cart");
+      localStorage.removeItem("shopping-price");
+      setReload(!reload);
+      toast.success("your order confirm");
+     
+    } 
+    else if(!price){
+        toast.error("no order yet")
+    }
+    else {
+      toast.error("plese provide all information");
+    }
+  };
   return (
     <div>
       <Title title="shipping"></Title>
       <Header></Header>
       <div className="container">
         <div className="row">
-        <div className=" col-md-6 mx-auto form-style shadow p-5 mt-5">
-              <h3 className="text">Payable Total: ${price}</h3>
-              <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Your name</Form.Label>
-                  <Form.Control
-                    onChange={handleNameForm}
-                    type="text"
-                    placeholder="Enter name"
-                    required
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control
-                    onChange={handleEmailForm}
-                    type="email"
-                    placeholder="Enter email"
-                    required
-                  />
-                  <Form.Text className="text-danger">{error.email}</Form.Text>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Phone Number</Form.Label>
-                  <Form.Control
-                    onChange={handleNumberForm}
-                    type="number"
-                    placeholder="Enter your number"
-                    required
-                  />
-                  <Form.Text className="text-danger">{error.number}</Form.Text>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Address</Form.Label>
-                  <Form.Control
-                    onChange={handleaddressform}
-                    type="text"
-                    placeholder="Enter your address"
-                    required
-                  />
-                  <Form.Text className="text-danger">{error.address}</Form.Text>
-                </Form.Group>
+          <div className=" col-md-6 mx-auto form-style shadow p-5 mt-5">
+            <h3 className="text">Payable Total: ${price}</h3>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Your name</Form.Label>
+                <Form.Control
+                  onChange={handleNameForm}
+                  type="text"
+                  placeholder="Enter name"
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  onChange={handleEmailForm}
+                  type="email"
+                  placeholder="Enter email"
+                  required
+                />
+                <Form.Text className="text-danger">{error.email}</Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Phone Number</Form.Label>
+                <Form.Control
+                  onChange={handleNumberForm}
+                  type="number"
+                  placeholder="Enter your number"
+                  required
+                />
+                <Form.Text className="text-danger">{error.number}</Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Address</Form.Label>
+                <Form.Control
+                  onChange={handleaddressform}
+                  type="text"
+                  placeholder="Enter your address"
+                  required
+                />
+                <Form.Text className="text-danger">{error.address}</Form.Text>
+              </Form.Group>
 
-
-                <Form.Text className="text-danger">
-                  {error.otherError}
-                </Form.Text>
-
-              </Form>
-              <div className="mt-4">
-                <div
-                  className="w-100"
-                  style={{ border: "1px solid #6c757d", height: "1px" }}
-                ></div>
-              </div>
+              <Form.Text className="text-danger">{error.otherError}</Form.Text>
+            </Form>
+            <div className="mt-4">
+              <div
+                className="w-100"
+                style={{ border: "1px solid #6c757d", height: "1px" }}
+              ></div>
+            </div>
             <div className="text-end mt-4">
-             <span className="cancel-btn text-right ">Cancel Order</span>
-               <span className="order-btn text-right ">Place Order</span>
+              <span
+                onClick={handleCancelOrdr}
+                className="cancel-btn text-right "
+              >
+                Cancel Order
+              </span>
+              <span onClick={handleSubmit} className="order-btn text-right ">
+                Place Order
+              </span>
             </div>
-            </div>
+          </div>
         </div>
       </div>
       <Fotter></Fotter>
