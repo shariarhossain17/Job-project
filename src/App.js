@@ -8,6 +8,7 @@ import Details from "./Components/Pages/Details";
 import Home from "./Components/Pages/Home";
 import Login from "./Components/Pages/Login";
 import Register from "./Components/Pages/Register";
+import Shipping from "./Components/Pages/Shipping";
 import NotFound from "./Components/Shared/NotFound";
 import RequireAuth from "./Components/Shared/Requireauth";
 
@@ -46,6 +47,7 @@ function App() {
           path="/adriano-product/:id"
           element={<Details></Details>}
         ></Route>
+        <Route path="/shipping" element={<Shipping></Shipping>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>

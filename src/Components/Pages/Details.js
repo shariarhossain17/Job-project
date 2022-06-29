@@ -3,32 +3,48 @@ import { Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/effect-creative";
+import useCart from "../../Hooks/useCart";
+import { addToStorage } from "../../Utilities/AddTodb";
 import data from "../data";
 import Fotter from "../Shared/Fotter";
+import Header from "../Shared/Header";
 
 const Details = () => {
-  const [cart,setCart] = useState(1);
+  const [cart,setCart] = useCart();
+  console.log(cart);
+ 
   
-const { id } = useParams();
+  const { id } = useParams();
   const product = data.find((p) => p.id == id);
+  const [reload,setReload] = useState(false)
 
-  
-  const [price,setPrice] = useState(parseInt(product.price))
-
-  
   const addToCart = () => {
-    // count = count++
-    const money = parseInt(cart * parseInt(product.price) + parseInt(product.price)) ;
-    setCart(prevCart => prevCart+1)
-    console.log(cart,price);
-    setPrice(money)
+   
+    let newProduct = []
+    const exist = cart.find(c => c.id == product.id)
+    console.log(exist);
+
+    if(!exist){
+      product.quantity = 1;
+      newProduct = [...cart,product]
+    }
+    else{
+      const rest = cart.filter(c => cart.id != product.id)
+      exist.quantity = exist.quantity + 1;
+      newProduct = [...rest,exist]
+    }
+    
+    addToStorage(product.id)
+    setCart(newProduct)
+    setReload(!reload)
   
 }
 
   return (
-    <div className="mt-5">
+    <div>
+      <Header></Header>
       <title title="details"></title>
-      <div className="container">
+      <div className="container mt-5">
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-md-6">
             <div className="text-center">
@@ -42,8 +58,8 @@ const { id } = useParams();
               <Card.Body>
                 <Card.Title className="mb-4">{product.name}</Card.Title>
                 <Card.Text>
-                  <h4 className="mb-4">${price}</h4>
-                  <h5>Cart: {cart}</h5>
+                  <h4 className="mb-4">${product.price}</h4>
+                  <h5>Cart:</h5>
                 </Card.Text>
                 <button className="btn-style" onClick={addToCart}>Add To Cart</button>
               </Card.Body>
