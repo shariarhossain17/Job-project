@@ -58,6 +58,7 @@ const Login = () => {
  const handleSignIn = event =>{
    event.preventDefault()
    signInWithEmailAndPassword(information.email,information.password)
+   console.log("hello");
  }
 
 
@@ -123,7 +124,7 @@ const Login = () => {
                 </Form.Text>
               </Form.Group>
               <a onClick={handleResetPass} className="btn btn-link text-decoration-none  password-btn mb-1">Forgot Password?</a>
-              <p className="regigter-btn w-100" variant="primary" type="submit">
+              <p onClick={handleSignIn} className="regigter-btn w-100" variant="primary" type="submit">
                 LOGIN
               </p>
             </Form>

@@ -150,7 +150,7 @@ useEffect(()=>{
                 <Form.Text className="text-danger">
                   {error.otherError}
                 </Form.Text>
-                <p
+                <p onClick={handleSubmit}
                   className="regigter-btn w-100  mt-2"
                   variant="primary"
                   type="submit"
